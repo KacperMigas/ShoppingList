@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     x:Class="ShoppingList.Views.CategoryView"
+     Title="Kategorię">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+           
+            <Label Text="Lista Kategorii"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+            
+            <CollectionView ItemsSource="{Binding Categories}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="20" Margin="20"  WidthRequest="550" BackgroundColor="#252525">
+                            <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                               
+                                <Label Text="{Binding CategoryName}"
+                                       FontSize="26"
+                                       TextColor="yellow"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+
+                               
+                                <CollectionView ItemsSource="{Binding Products}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Frame Padding="20" Margin="15" BorderColor="white" BackgroundColor="#181818">
+                                                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                                                   
+                                                    <Label Text="{Binding Name}"
+                                                           FontSize="24"
+                                                           TextColor="white"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center" />
+                                                    
+                                                    <Label Text="{Binding Quantity}"
+                                                           FontSize="24"
+                                                           TextColor="White"
+                                                           HorizontalOptions="Center"
+                                                           VerticalOptions="Center" />
+                                                </VerticalStackLayout>
+                                            </Frame>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

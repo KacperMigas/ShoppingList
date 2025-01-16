@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingList.Views.ProductView">
+
+    <ContentView.Resources>
+       
+        <Style x:Key="ProductTextStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Style.Triggers>
+                <DataTrigger TargetType="Label" Binding="{Binding IsPurchased}" Value="True">
+                    <Setter Property="TextDecorations" Value="Strikethrough" />
+                    <Setter Property="TextColor" Value="yellow" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="WidthRequest" Value="80" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="BackgroundColor" Value="#181818" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+    </ContentView.Resources>
+
+    <Frame  CornerRadius="10" Padding="10" Margin="5" HasShadow="True" BackgroundColor="#181818">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            
+            <VerticalStackLayout Grid.Column="0" Spacing="5" VerticalOptions="Center">
+                <Label Text="{Binding Name, StringFormat='Nazwa: {0}'}" 
+                       Style="{StaticResource ProductTextStyle}"
+                       FontSize="24"/>
+                <Label Text="{Binding Unit, StringFormat='Jednostka: {0}'}" 
+                       Style="{StaticResource ProductTextStyle}" 
+                       FontSize="24"/>
+                <Label Text="{Binding Quantity, StringFormat='Ilość: {0}'}" 
+                       Style="{StaticResource ProductTextStyle}" 
+                       FontSize="24"/>
+                <Label Text="{Binding CategoryName, StringFormat='Kategoria: {0}'}" 
+                       Style="{StaticResource ProductTextStyle}" 
+                       FontSize="24"/>
+            </VerticalStackLayout>
+
+            
+            <Grid Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                
+                <Button 
+                    x:Name="IncrementButton"
+                    Text="+"
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    Margin="10"
+                    Style="{StaticResource ActionButtonStyle}" />
+
+                <Button 
+                    x:Name="DecrementButton"
+                    Text="-"
+                    Grid.Row="1" 
+                    Grid.Column="0"
+                    Margin="10"
+                    Style="{StaticResource ActionButtonStyle}" />
+
+                
+                <Button
+                    x:Name="PurchasedButton"
+                    Text="Kupione"
+                    Grid.Row="0" 
+                    Grid.Column="1"
+                    WidthRequest="210"
+                    Margin="10"
+                    HeightRequest="50"
+                    FontSize="18"
+                    CornerRadius="5"
+                    TextColor="black" />
+
+                <Button 
+                    x:Name="DeleteButton"
+                    Text="Usuń"
+                    Grid.Row="1" 
+                    Grid.Column="1"
+                    WidthRequest="210"
+                    Margin="10"
+                    HeightRequest="50"
+                    FontSize="18"
+                    CornerRadius="5"
+                    TextColor="black" />
+            </Grid>
+        </Grid>
+    </Frame>
+</ContentView>

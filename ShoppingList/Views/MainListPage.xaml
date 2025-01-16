@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShoppingList.Views"
+             x:Class="ShoppingList.Views.MainListPage"
+             Title="Lista Zakupów">
+
+    <Grid Padding="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Column="0" HorizontalOptions="Start" Spacing="20">
+            <Label Text="Nazwa produktu:" HorizontalOptions="Start" Margin="5,0" FontAttributes="Bold" FontSize="16" />
+            <Editor x:Name="productTitle"
+                Placeholder="Nazwa..."
+                HorizontalOptions="Start"
+                WidthRequest="400"
+                HeightRequest="40"
+                Margin="5,0"
+                FontSize="14" />
+
+            <Label Text="Jednostka:" HorizontalOptions="Start" Margin="5,0" FontAttributes="Bold" FontSize="16" />
+            <Editor x:Name="productUnit"
+                Placeholder="Jednostka..."
+                HorizontalOptions="Start"
+                WidthRequest="400"
+                HeightRequest="40"
+                Margin="5,0"             
+                FontSize="14" />
+
+            <Label Text="Ilość:" HorizontalOptions="Start" Margin="5,0" FontAttributes="Bold" FontSize="16" />
+            <Editor x:Name="productQuantity"
+                Keyboard="Numeric"
+                Placeholder="Ilość..."
+                HorizontalOptions="Start"
+                WidthRequest="400"
+                HeightRequest="40"
+                Margin="5,0"
+                FontSize="14" />
+
+            <Label Text="Kategoria:" HorizontalOptions="Start" Margin="5,0" FontAttributes="Bold" FontSize="16" />
+            <Editor x:Name="productCategory"
+                Placeholder="Kategoria..."
+                HorizontalOptions="Start"
+                WidthRequest="400"
+                HeightRequest="40"
+                Margin="5,0"
+                FontSize="14" />
+
+            <Button Text="Dodaj produkt"
+                HorizontalOptions="Start"
+                Margin="5,10"
+                FontSize="16"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                Padding="10"
+                HeightRequest="50"
+                Clicked="onAddProductClicked" />
+
+            
+        </StackLayout>
+
+        <ScrollView Grid.Column="1">
+            <StackLayout x:Name="ProductsContainer" Margin="10" Spacing="10"></StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
